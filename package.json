@@ -1,0 +1,8 @@
+{
+  "name": "easy-fs",
+  "version": "0.0.1",
+  "dependencies": {
+    "glob": "^7.1.2",
+    "mkdirp": "^0.5.1"
+  }
+}
