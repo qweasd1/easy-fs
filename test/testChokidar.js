@@ -6,9 +6,9 @@
 const path = require('path');
 
 const chokidar = require('chokidar');
-let watcher = chokidar.watch(["src","node_modules"],{
+let watcher = chokidar.watch(["."],{
   ignoreInitial:true,
-  cwd:process.cwd(),
+  cwd:process.cwd() + "/" + "aTest",
   ignored:["node_modules/*/**/*"]
 })
 

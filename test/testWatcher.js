@@ -13,15 +13,10 @@ let d = new Directory({
 
 
 let watcher = new Watcher({
-  root:__dirname
+  cwd:__dirname,
+  ignored:["node_modules/*/**/*"]
 })
-watcher.watchers.push(chokidar.watch(__dirname,{
-  ignoreInitial:true
-}))
 
-
-
-watcher.register()
 
 
 watcher.addListener("child.addFile",d.relativePath,null,(path)=>{
@@ -32,7 +27,7 @@ watcher.addListener("child.addDir",d.relativePath,null,(path)=>{
   console.log("child.addDir:" + path);
 })
 
-watcher.addListener("child.removeDir",d.relativePath,["*Test"],(path)=>{
+watcher.addListener("child.removeDir",d.relativePath,null,(path)=>{
   console.log("child.removeDir:" + path);
 })
 
