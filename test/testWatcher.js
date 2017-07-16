@@ -8,48 +8,45 @@ const Watcher = require('../lib/FileWatcher');
 const chokidar = require('chokidar');
 
 let d = new Directory({
-  absolutePath:__dirname
+  cwd:__dirname
 })
 
 
-let watcher = new Watcher({
-  cwd:__dirname,
-  ignored:["node_modules/*/**/*"]
-})
+let f = d.file("src/test.js")
+f.content
 
-
-
-watcher.addListener("child.addFile",d.relativePath,null,(path)=>{
+d.on("child.addFile",(path)=>{
   console.log("child.addFile:" + path);
 })
 
-watcher.addListener("child.addDir",d.relativePath,null,(path)=>{
+d.on("child.addDir",(path)=>{
   console.log("child.addDir:" + path);
 })
 
-watcher.addListener("child.removeDir",d.relativePath,null,(path)=>{
+d.on("child.removeDir",(path)=>{
   console.log("child.removeDir:" + path);
 })
 
-watcher.addListener("child.removeFile",d.relativePath,null,(path)=>{
+d.on("child.removeFile",null,(path)=>{
   console.log("child.removeFile:" + path);
 })
 
-watcher.addListener("child.change",d.relativePath,null,(path)=>{
-  console.log("child.change:" + path);
+d.on("child.change",(path)=>{
+  console.log("child.change:" + f.content);
 })
 
-watcher.addListener("change",d.file("test1.js").relativePath,null,(path)=>{
+d.file("test1.js").on("change",(path)=>{
   console.log("change:"+path);
 })
 
-watcher.addListener("remove",d.dir("aTest").relativePath,null,(path)=>{
+d.file("test1.js").on("remove",(path)=>{
+  console.log("remove:"+path);
+})
+
+d.dir("aTest").on("remove",(path)=>{
   console.log("remove:" + path);
 })
 
-watcher.addListener("remove",d.dir("aa.js").relativePath,null,(path)=>{
-  console.log("remove:" + path);
-})
 
 
 
