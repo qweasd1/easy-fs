@@ -1,14 +1,14 @@
 {
   "name": "easy-fs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "dependencies": {
     "anymatch": "^1.3.0",
     "chokidar": "^1.7.0",
     "fs-extra": "^4.0.0",
     "glob": "^7.1.2"
   },
-  "repository":{
-    "type":"git",
+  "repository": {
+    "type": "git",
     "url": "https://github.com/qweasd1/easy-fs.git"
   }
 }
