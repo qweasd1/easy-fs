@@ -5,8 +5,8 @@
 
 const path = require('path');
 
-const FileWatcher = require('./FileWatcher');
-const Directory = require('./Directory');
+const FileWatcher = require('./lib/FileWatcher');
+const Directory = require('./lib/Directory');
 
 function create(options) {
   options.cwd = path.resolve(options.cwd)
