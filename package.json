@@ -6,5 +6,9 @@
     "chokidar": "^1.7.0",
     "fs-extra": "^4.0.0",
     "glob": "^7.1.2"
+  },
+  "repository":{
+    "type":"git",
+    "url": "https://github.com/qweasd1/easy-fs.git"
   }
 }
