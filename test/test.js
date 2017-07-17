@@ -5,37 +5,23 @@
 
 const path = require('path');
 const fs = require('fs');
+const EasyFs = require('../lib/index');
 
-
-const Directory = require('../lib/Directory');
-
-let d = new Directory({
-  absolutePath:path.resolve(process.cwd())
+let project = EasyFs.create({
+  cwd:process.cwd()
 })
 
-// let d = new Directory({
-//   absolutePath:"/Users/tony/Documents/projects/web/keystone/try/keystone-e1"
-// })
 
-// d.dir("a","b","c","d")
-// d.file("a","b","d","e.js")
-// d.dir("src","app")
-
-let f = d.dir("src/app/components")
-f.newBundle({
-  "new-component":{
-    "a.css": fs.createReadStream("test.js"),
-    "a.js":"test js",
-    "a.spec.js":"test test js",
-    "dir":{}
-  }
+project.on("child.addFile",(path)=>{
+  console.log(path);
 })
 
-// f.remove("*.js")
-// console.log();
+setTimeout(()=>{
+  project.dir("src/test").bundle({
+    "test.js":`module.exports = {
+     
+}`
+  })
+},1000)
 
-// let files = d.findAll("**/test.js")
-// files.write("")
 
-
-console.log();
