@@ -8,7 +8,9 @@ const Watcher = require('../lib/FileWatcher');
 const chokidar = require('chokidar');
 
 let d = new Directory({
-  cwd:__dirname
+  cwd:__dirname,
+  include:["a"],
+  ignored:["a/*.js"]
 })
 
 
@@ -19,7 +21,7 @@ d.on("child.addFile",(path)=>{
   console.log("child.addFile:" + path);
 })
 
-d.on("child.addDir",["*Test/"],(path)=>{
+d.on("child.addDir",(path)=>{
   console.log("child.addDir:" + path);
 })
 
