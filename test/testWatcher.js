@@ -19,7 +19,7 @@ d.on("child.addFile",(path)=>{
   console.log("child.addFile:" + path);
 })
 
-d.on("child.addDir",(path)=>{
+d.on("child.addDir",["*Test/"],(path)=>{
   console.log("child.addDir:" + path);
 })
 
