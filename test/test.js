@@ -5,23 +5,19 @@
 
 const path = require('path');
 const fs = require('fs');
-const EasyFs = require('../lib/index');
+const EasyFs = require('../index');
 
 let project = EasyFs.create({
   cwd:process.cwd()
 })
 
-
 project.on("child.addFile",(path)=>{
   console.log(path);
 })
 
-setTimeout(()=>{
-  project.dir("src/test").bundle({
-    "test.js":`module.exports = {
-     
-}`
-  })
-},1000)
+
+project.whenWatcherReady.then(()=>{
+  project.file("a/b/c.js").write("test")
+})
 
 
